@@ -33,7 +33,7 @@ setup(
     install_requires=[],
     entry_points={
         'console_scripts': [
-            'busy=busy:main',
+            'busy=busy:run_busy',
         ],
     },
 )

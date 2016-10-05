@@ -62,3 +62,9 @@ CREATE TABLE IF NOT EXISTS tasks_tags
     task_id INTEGER REFERENCES tasks,
     tag_id INTEGER REFERENCES tags
 );
+
+CREATE TABLE IF NOT EXISTS schema_version
+(
+    version INTEGER
+);
+INSERT INTO schema_version ( version ) VALUES ( 1 );
