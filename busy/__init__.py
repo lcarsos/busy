@@ -4,7 +4,7 @@ import sys
 
 numversion = (0, 0, 1)
 version = ".".join([str(num) for num in numversion])
-db_schema_version = 0
+db_schema_version = 1
 
 
 # pylint: disable=missing-docstring
