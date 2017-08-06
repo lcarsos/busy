@@ -1,7 +1,7 @@
 /* Create the primary table for a todo list application */
 CREATE TABLE IF NOT EXISTS tasks
 (
-    id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
+    time_id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
     name TEXT,
     description TEXT,
     expected_time INTEGER,      /* This is expected to be garbage, but can sometimes be useful */
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS tasks
 /* This makes it easier to find similar tasks */
 CREATE TABLE IF NOT EXISTS tags
 (
-    id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
+    tag_id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
     name TEXT
 );
 INSERT INTO tags ( name ) VALUES ( "busy_internal_nc" );
@@ -24,10 +24,17 @@ INSERT INTO tags ( name ) VALUES ( "busy_internal_nc" );
 /* For logging time on tasks */
 CREATE TABLE IF NOT EXISTS times
 (
-    id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
+    time_id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
     started INTEGER,
     amount INTEGER,
     comment TEXT
+);
+
+CREATE TABLE IF NOT EXISTS active
+(
+    active_id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
+    task_id INTEGER REFERENCES tasks,
+    time_id INTEGER REFERENCES times
 );
 
 /* Some tasks cannot be started until another is completed */
